@@ -1,0 +1,2 @@
+class UserCasesController < ApplicationController
+end
