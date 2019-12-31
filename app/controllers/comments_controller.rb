@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
     def index
         if params['caseId']
-            
             thisCase = Case.find(params['caseId'])
-            render json: { comments: thisCase.comments }
+            render json: { comments: thisCase.comments, author: 'derp' }
         else
             render json: { message: 'YOU DID IT!  THIS IS COMMENTS!'}
         end
@@ -12,7 +11,10 @@ class CommentsController < ApplicationController
     def create
         @comment = Comment.create(comment_params)
         if @comment.valid?
-            render json: { comment: CommentSerializer.new(@comment) }, status: :created
+            render json: { 
+                comment: CommentSerializer.new(@comment),
+                author: @user.username    
+            }, status: :created
         else
             render json: { message: 'COMMENT CREATION FAILURE' }, status: :not_created
         end
@@ -20,6 +22,6 @@ class CommentsController < ApplicationController
 
     private
     def comment_params
-      params.require(:comment).permit(:case_id, :content)
+      params.require(:comment).permit(:case_id, :content, :author)
     end
 end
