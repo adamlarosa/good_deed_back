@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
         if @comment.valid?
             render json: { 
                 comment: CommentSerializer.new(@comment),
+                # yeah great it returns the author.  how about saving it to the database?
                 author: @user.username    
             }, status: :created
         else
