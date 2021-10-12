@@ -100,7 +100,7 @@ GEM
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     pg (1.2.3)
-    puma (4.3.8)
+    puma (4.3.9)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -163,7 +163,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack (~> 6.0)
+  actionpack (>= 6.0.4.1)
   active_model_serializers (~> 0.10.10)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
